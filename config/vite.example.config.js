@@ -16,8 +16,16 @@ export default defineConfig({
             // },
             hashPrefix: "hello", // 生成 hash 会根据类名 + 一些其他的字符串（文件名 + 内部随机生成的一个字符串）去进行生成
             globalModulePaths: [] // 代表不想参与到 css 模块化的路径
-
-        }
+        },
+        preprocessorOptions: { // key + config  key 代表预处理器的名字
+            less: { // 整个的配置对象都会最终给到 less 的命令行执行参数（全局参数）中去
+                math: "always",
+                globalVars: { // 全局变量
+                    mainColor: "pink"
+                }
+            }
+        },
+        devSourcemap: true // 开启 css 的 sourceMap （文件索引）
     },
     envDir: process.cwd() + "\\env",
     envPrefix: "PUB_" //修改客户端 vite 环境变量校验前缀
