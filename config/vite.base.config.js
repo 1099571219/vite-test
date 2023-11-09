@@ -1,5 +1,7 @@
 import { defineConfig } from "vite";
 
 export default defineConfig({
-    optimizeDeps: {}
+    optimizeDeps: {},
+    envDir: process.cwd() + "\\env",
+    envPrefix: "PUB_"
 })
