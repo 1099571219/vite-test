@@ -1,6 +1,22 @@
 import { defineConfig } from "vite";
-
+const path = require('path')
 export default defineConfig({
+    resolve: {
+        alias: { // 配置路径别名
+            "@": path.resolve(__dirname, "../src"),
+            "@assets": path.resolve(__dirname, "../src/assets"),
+        }
+    },
+    build: {
+        rollupOptions: {// 配置 rollup 的一些构建策略
+            output: {// 控制输出
+                assetFileNames: '[hash].[name].[ext]',// 再 rollup 中 ，hash 代表文件名和文件内容进行组合计算的结果
+            }
+        },
+        assetsInlineLimit: 4096, // 小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 0 可以完全禁用此项。
+        outDir: "testDist", // 输出目录
+        assetsDir: "static", // 静态资源输出目录
+    },
     optimizeDeps: {
         exclude: [] // 将数组中的依赖跳过依赖预构建
     },
@@ -25,6 +41,7 @@ export default defineConfig({
                 }
             }
         },
+        postcss: {}, // 配置 postcss
         devSourcemap: true // 开启 css 的 sourceMap （文件索引）
     },
     envDir: process.cwd() + "\\env",
