@@ -1,3 +1,4 @@
+import createHtmlPlugin from "../plugins/create-html-plugin";
 import viteAliasPlugin from "../plugins/vite-alias-plugin";
 import { defineConfig } from "vite";
 const path = require("path");
@@ -11,6 +12,12 @@ export default defineConfig({
     optimizeDeps: {},
     envDir: process.cwd() + "\\env",
     envPrefix: "PUB_",
-    plugins: [viteAliasPlugin('@')]
+    plugins: [viteAliasPlugin('@'), createHtmlPlugin({
+        inject: {
+            data: {
+                title: '首页'
+            }
+        }
+    })]
 
 })

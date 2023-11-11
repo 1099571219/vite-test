@@ -19,7 +19,6 @@ const createAlias = async (keyName, config, env) => {
     const getSrcDir = await fs.readdir(srcPath)
     const dirFiles = await diffDirFile(getSrcDir, keyName, srcPath)
     dirFiles.dirs[keyName] = srcPath
-    console.log('getSrcDir:', dirFiles);
     return dirFiles.dirs
 }
 
