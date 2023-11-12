@@ -1,3 +1,4 @@
+/**@returns {import('vite').Plugin} */
 module.exports = (options) => {
     return {
         transformIndexHtml: {

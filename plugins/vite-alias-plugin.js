@@ -22,6 +22,7 @@ const createAlias = async (keyName, config, env) => {
     return dirFiles.dirs
 }
 
+/**@returns {import('vite').Plugin} */
 module.exports = (keyName) => {
     return {
         config: async (config, env) => {

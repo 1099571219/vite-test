@@ -14,5 +14,9 @@
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "mockjs": "^1.1.0",
+    "vite-plugin-mock-server": "^1.1.0"
   }
 }
