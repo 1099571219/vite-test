@@ -7,11 +7,9 @@ import { loadEnv } from "vite";
 //策略模式
 const envResolver = {
     "serve": () => {
-        console.log('开发环境');
         return { ...viteBaseConfig, ...viteDevConfig }
     },
     "build": () => {
-        console.log('生产环境');
         return Object.assign({}, viteBaseConfig, viteProdConfig)
     }
 }

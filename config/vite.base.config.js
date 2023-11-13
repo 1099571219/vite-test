@@ -1,9 +1,8 @@
 import createHtmlPlugin from "../plugins/create-html-plugin";
 import viteAliasPlugin from "../plugins/vite-alias-plugin";
 import { defineConfig } from "vite";
-import mockServer from "vite-plugin-mock-server"
 import vitePluginMock from "../plugins/vite-plugin-mock";
-const path = require("path");
+import path from "path";
 export default defineConfig({
     // resolve: {
     //     alias: {
@@ -11,7 +10,25 @@ export default defineConfig({
     //         "@assets": path.resolve(__dirname, "../src/assets"),
     //     }
     // },
-    optimizeDeps: {},
+    build: {
+        minify: false,
+        rollupOptions: {
+            input: [
+                path.resolve(__dirname, "../index.html"),
+                path.resolve(__dirname, "../src/index.html")
+            ],
+            output: {
+                manualChunks: (id) => {
+                    if (id.includes('node_modules')) {
+                        console.log(id);
+                        return 'vendor'
+                    }
+                },
+            },
+        }
+    },
+    optimizeDeps: {
+    },
     envDir: process.cwd() + "\\env",
     envPrefix: "PUB_",
     plugins: [

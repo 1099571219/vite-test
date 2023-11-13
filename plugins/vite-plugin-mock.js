@@ -16,9 +16,7 @@ module.exports = async (options) => {
             handler: (server) => {
                 server.middlewares.use((req, res, next) => {
                     const matched = apiFile.find((item) => item.pattern === req.url)
-                    console.log('middleware');
                     if (matched) {
-                        console.log('req', req.url);
                         res.setHeader('Content-Type', 'application/json')
                         res.end(matched.data)
                     } else {

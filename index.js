@@ -1,4 +1,3 @@
-import './src/request'
 import _ from 'lodash'
 import klee from "@assets/images/klee.png"
 const img = document.createElement('img')
@@ -7,6 +6,11 @@ img.style.height = '500px'
 document.body.appendChild(img)
 
 const btn = document.createElement('button')
+
+const arr = [1, 2, 3, 4]
+_.each(arr, (item) => {
+    console.log(item)
+})
 
 btn.addEventListener('click', async () => {
     const url = '/api/test1'

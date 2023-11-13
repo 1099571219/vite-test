@@ -8,14 +8,24 @@ export default defineConfig({
         }
     },
     build: {
+        minify: false,//配置打包结果压缩
         rollupOptions: {// 配置 rollup 的一些构建策略
+            input: [
+                path.resolve(__dirname, "../index.html"),
+                path.resolve(__dirname, "../src/index.html")
+            ],
             output: {// 控制输出
                 assetFileNames: '[hash].[name].[ext]',// 再 rollup 中 ，hash 代表文件名和文件内容进行组合计算的结果
+                manualChunks: (id) => {//手动返回需要分包的资源
+                    console.log(id);
+                    return 'vendor'
+                },
             }
         },
         assetsInlineLimit: 4096, // 小于此阈值的导入或引用资源将内联为 base64 编码，以避免额外的 http 请求。设置为 0 可以完全禁用此项。
         outDir: "testDist", // 输出目录
         assetsDir: "static", // 静态资源输出目录
+
     },
     optimizeDeps: {
         exclude: [] // 将数组中的依赖跳过依赖预构建
