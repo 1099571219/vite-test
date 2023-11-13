@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "mockjs": "^1.1.0",
-    "vite-plugin-mock-server": "^1.1.0"
+    "vite-plugin-cdn-import": "^0.3.5",
+    "vite-plugin-cdn2": "^0.15.1"
   }
 }
